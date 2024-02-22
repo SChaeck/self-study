@@ -26,7 +26,8 @@ while next_day_ripe:
             ny = y + dy
             if 0 <= nx < N and 0 <= ny < M and tomato_storage[nx][ny] == 0:
                 next_day_ripe.append([nx, ny])
-                tomato_storage[nx][ny] = 1
+                tomato_storage[nx][ny] = 1 
+                ### 중요! deque에 넣을 때 미리 익혀버려서 한 번 덱에 들어간 토마토가 또 들어가는 일이 없도록 하자. 이러한 중복만 막아도 시간 많이 줄일 수 있을 듯.
 
 
 for tomato_list in tomato_storage:
