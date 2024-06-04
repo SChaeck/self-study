@@ -180,28 +180,28 @@ def minimization_fa(dfa: FA):
     return min_dfa
 
 if __name__ == "__main__":
-    # 10개의 예제에 대한 검증
-    example_num_list = ['3.18', '3.22', '3.23', '3.25', '3.26', 'Ex2(www.javatpoint.com)', 'P3.7', 'P3.8(1)', 'P3.8(2)', 'P3.8(3)']
-    for example_num in example_num_list:
 
-        # 예제 번호에 맞는 파일을 open하여 FA 정보를 읽어들임
-        with open(f'examples/{example_num}.txt', 'r', encoding="utf-8") as f:
-            info = f.readlines()
+    # 예제 번호에 맞는 파일을 open하여 FA 정보를 읽어들임
+    dir_path = 'examples/'
+    example_num = '3.18'
+    path = dir_path + example_num
+    with open(f'{path}.txt', 'r', encoding="utf-8") as f:
+        info = f.readlines()
 
-        # 읽어들인 파일로 nfa 생성
-        nfa = make_FA(info)
+    # 읽어들인 파일로 nfa 생성
+    nfa = make_FA(info)
 
-        # nfa를 파일로 내보냄
-        nfa.export_text(f'examples/{example_num}', '(ε-)NFA')
-        
-        # nfa를 dfa로 바꿈
-        dfa = nfa2dfa(nfa)
+    # nfa를 파일로 내보냄
+    nfa.export_text(path, '(ε-)NFA')
+    
+    # nfa를 dfa로 바꿈
+    dfa = nfa2dfa(nfa)
 
-        # dfa를 파일로 내보냄
-        dfa.export_text(f'examples/{example_num}', 'DFA')
+    # dfa를 파일로 내보냄
+    dfa.export_text(path, 'DFA')
 
-        # dfa를 최소화 함
-        reduced_dfa = minimization_fa(dfa)
+    # dfa를 최소화 함
+    reduced_dfa = minimization_fa(dfa)
 
-        # 최소화된 dfa를 파일로 내보냄
-        reduced_dfa.export_text(f'examples/{example_num}', 'reduced DFA')
+    # 최소화된 dfa를 파일로 내보냄
+    reduced_dfa.export_text(path, 'reduced DFA')

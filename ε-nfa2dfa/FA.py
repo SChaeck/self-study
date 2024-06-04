@@ -32,7 +32,9 @@ class FA:
 
     # FA의 현재 상태를 .txt 파일로 출력하는 함수 
     def export_text(self, dir_name, file_name):
-
+        
+        if not dir_name:
+            dir_name = "."
         create_directory(dir_name) # 디렉토리 생성
 
         # 파라미터로 받은 주소에 .txt 파일을 생성한 뒤 FA의 현재 상태 작성
